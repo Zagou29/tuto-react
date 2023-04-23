@@ -1,18 +1,75 @@
-.clock{
-    display:grid;
-    align-items: center;
-    justify-content: center;
-text-shadow: 2px 2px 3px grey;
+.clock {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px 3px grey;
 
-background-color: beige;
-box-shadow: 5px 5px 10px grey;
-border: 1px solid grey;
-border-radius: 10px;
-padding:1rem;
+  background-color: beige;
+  box-shadow: 5px 5px 10px grey;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 1rem;
 }
-.lect{
-    width:80vw;
-    border-radius: 10px;
-    margin: auto;
-   aspect-ratio: 16 / 9;
+.lect {
+  width: 80vw;
+  border-radius: 10px;
+  margin: auto;
+  aspect-ratio: 16 / 9;
+}
+.inc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  color: blue;
+  width:30vw;
+}
+.form {
+    display: grid;
+    align-items: center;
+    width:60vw;
+}
+.form-group {
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  padding: 7px 0;
+}
+.form-control{
+width: fit-content;
+}
+.form-check{
+display:flex;
+align-items: center;
+}
+.form-check-input{
+width:1rem;
+aspect-ratio: 1;
+border-radius: 50%;
+}
+.h3{
+    text-align: justify;
+    margin:0;
+    background-color: coral ;
+}
+.grd{
+    display: grid;
+    grid-template-columns: auto 3rem 1fr;
+    justify-items: end;
+    
+}
+.temp{
+  
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.bout{
+  background-color: pink;
+  height:3rem;
+}
+.boutpas{
+  height:3rem;
+  background-color: aqua;
 }

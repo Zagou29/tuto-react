@@ -3,9 +3,7 @@ import "./clock.css";
 export class Clock extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      date: new Date(),
-    };
+    this.state = { date: new Date() };
     this.timer = null;
   }
   componentDidMount() {
@@ -20,26 +18,73 @@ export class Clock extends Component {
   }
   render() {
     return (
-      <div className="clock">
-        <h1>{this.props.nom}</h1>
-
+      <div>
+        <h1>bonjour vous</h1>
         <p>{this.state.date.toLocaleString()}</p>
-        <iframe
-          title="This is a unique title" 
-          class="lect"
-          loading="lazy"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen=""
-          sandbox=" allow-scripts  allow-same-origin "
-          src="https://www.youtube-nocookie.com/embed/kfcoLj1gl0w?rel=0&amp;modestbranding=1"
-        ></iframe>
       </div>
     );
   }
 }
-export function Home({name,adresse}) {
-    return <div>
-        <h1>Bonjour { name}</h1>
-        <Clock nom={adresse} />
+export const Video = ({ name, id }) => {
+  return (
+    <div className="clock">
+      <h1>{name}</h1>
+      <iframe
+        title={`${name}`}
+        className="lect"
+        loading="lazy"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullcreen=""
+        sandbox=" allow-scripts  allow-same-origin "
+        src={`https://www.youtube-nocookie.com/embed/${id}?rel=0&amp;modestbranding=1`}
+      ></iframe>
     </div>
+  );
+};
+
+export class Incrementeur extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { n: props.start, timer: null };
+  }
+  componentDidMount() {
+    this.play();
+  }
+  componentWillUnmount() {
+    this.pause();
+  }
+  increment() {
+    this.setState((state, props) => ({ n: state.n + props.step }));
+    
+  }
+  pause() {
+    window.clearInterval(this.state.timer);
+    this.setState({ timer: null });
+  }
+  play() {
+    window.clearInterval(this.state.timer);
+    this.setState({
+      timer: window.setInterval(this.increment.bind(this), 1000),
+    });
+  }
+  toggle() {
+    return this.state.timer ? this.pause() : this.play();
+  }
+  label() {
+    return this.state.timer ? "pause" : "start";
+  }
+  reset() {
+    window.clearInterval(this.state.timer);
+    this.setState({ n: this.props.start, timer: null });
+  }
+  render() {
+    return (
+      <div className="inc">
+        valeur : {this.state.n}
+        <button onClick={() => this.toggle()}> {this.label()}</button>
+        <button onClick={() => this.reset()}> Reset</button>
+      </div>
+    );
+  }
 }
+Incrementeur.defaultProps = { start: 5, step: 1 };
